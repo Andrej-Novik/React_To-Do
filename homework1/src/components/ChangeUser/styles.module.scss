@@ -1,0 +1,16 @@
+.firstName {
+	margin: 0 0 1rem 0;
+}
+.lastName {
+	margin: 0 0 1rem 0;
+}
+.buttons {
+	display: flex;
+	.delete {
+		width: 4rem;
+		margin: 0 0 0 1rem;
+	}
+	.keep {
+		width: 4rem;
+	}
+}
