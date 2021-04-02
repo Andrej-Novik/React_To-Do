@@ -1,7 +1,4 @@
-import ChangeUser from "../ChangeUser"
-import AddUser from "./AddUser"
 import styles from "./styles.module.scss"
-import User from "./User"
 
 let users = [
 	{ id: 1, firstName: 'Ivan', lastName: 'Nefedov' },
@@ -13,7 +10,7 @@ let users = [
 
 let usersList = users.map((user) => {
 	return (
-		<User key={user.id} firstName={ user.firstName } lastName={ user.lastName }/>
+		<li key={user.id}> {user.firstName} { user.lastName }</li>
 	)
 })
 
@@ -22,8 +19,6 @@ const Users = () => {
 	return (
 		<div className={styles.users}>
 			{ usersList}
-			<AddUser />
-			<ChangeUser />
 		</div>
 	)
 }

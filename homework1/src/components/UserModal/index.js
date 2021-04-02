@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss"
 
-const ChangeUser = () => {
+const UserModal = () => {
 	return (
 		<div className={styles.modal}>
 			<div className={styles.firstName}>
@@ -17,4 +17,4 @@ const ChangeUser = () => {
 	)
 }
 
-export default ChangeUser
+export default UserModal
