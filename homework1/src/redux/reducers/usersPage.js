@@ -3,7 +3,7 @@ import { ADD_USER, } from '../actionTypes/users'
 const initialState = {
 	isModalOpen: false,
 	openUser: { id: null, firstName: '', lastName: '', },
-	list: [
+	users: [
 		{ id: 1, firstName: 'Ivan', lastName: 'Nefedov' },
 		{ id: 2, firstName: 'Nikita', lastName: 'Zalubov' },
 		{ id: 3, firstName: 'Andrew', lastName: 'Taranow' },
@@ -15,11 +15,23 @@ const initialState = {
 const users = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_USER:
-			return (
-			[...state,
-		{ id: 6, firstName: action.payload.firstName, lastName: action.payload.lastName }])
-		default: return state
+			let firstName = action.firstName
+			let lastName = action.lastName
+			return {
+				...state,
+				users: [...state.users, {
+					id: Date.now(),
+					firstName,
+					lastName
+				}]
+			}
+		default:
+			return state
 	}
+}
+
+export function addUser(firstName, lastName) {
+	return { type: ADD_USER, firstName, lastName }
 }
 
 export default users

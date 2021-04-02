@@ -1,12 +1,12 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import UsersPage from './components/UsersPage';
+import UserPageContainer from './components/UsersPage/UserPageContainer';
 
 function App() {
    return (
       <BrowserRouter>
          <div className="app">
-            <Route path="/users" render={() => <UsersPage />} />
+            <Route path="/users" render={() => <UserPageContainer />} />
          </div>
       </BrowserRouter>
    );

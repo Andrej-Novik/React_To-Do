@@ -1,16 +1,36 @@
-.firstName {
-	margin: 0 0 1rem 0;
-}
-.lastName {
-	margin: 0 0 1rem 0;
-}
-.buttons {
-	display: flex;
-	.delete {
-		width: 4rem;
-		margin: 0 0 0 1rem;
+.modal {
+	position: relative;
+	width: 12rem;
+	padding: 1rem;
+	border: 1px solid #000;
+	margin: 0 auto;
+	.close {
+		position: absolute;
+		line-height: 0;
+		top: 0.6rem;
+		right: 0.3rem;
+		cursor: pointer;
 	}
-	.keep {
-		width: 4rem;
+	.firstName {
+		margin: 0 0 1.5rem 0;
+		input {
+			padding: 0.3rem;
+		}
+	}
+	.lastName {
+		margin: 0 0 1.5rem 0;
+		input {
+			padding: 0.3rem;
+		}
+	}
+	.buttons {
+		display: flex;
+		.delete {
+			width: 4rem;
+			margin: 0 0 0 1rem;
+		}
+		.keep {
+			width: 4rem;
+		}
 	}
 }
