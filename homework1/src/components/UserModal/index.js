@@ -1,22 +1,51 @@
 import styles from "./styles.module.scss"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const UserModal = (props) => {
-	return (
-		<div className={styles.userModal}>
-			<form className={styles.form} >
-				<span className={styles.close}>X</span>
-				<h3>Add user</h3>
+
+	let [firstName, setFirstName] = useState(props.currentUser.firstName)
+	let [lastName, setLastName] = useState(props.currentUser.lastName)
+
+	useEffect(() => {
+		setFirstName(props.currentUser.firstName)
+		setLastName(props.currentUser.lastName)
+	}, [props.currentUser])
+
+	const save = () => {
+		props.onSave(firstName, lastName, props.currentUser.id)
+	}
+
+	return props.isModalOpen &&(
+		<div className={styles.userModal }>
+			<div className={styles.form} >
+			<span onClick={props.onClose} className={styles.close}>X</span>
+			{
+				props.currentUser.id ?  <h3>Edit user</h3> : <h3>Add user</h3>
+			}
 				<div className={styles.firstName}>
-					<input placeholder="last name"/>
+				<input
+					value={lastName}
+					placeholder="last name"
+					onChange={(e) => {
+						setLastName(e.target.value)
+					}}/>
+				
 				</div>
+
 				<div className={styles.lastName}>
-					<input placeholder="first name"/>
+				<input
+					value={firstName}
+					placeholder="first name"
+					onChange={(e) => {
+						setFirstName(e.target.value)
+					}}/>
 				</div>
+				
 				<div className={styles.buttons}>
-					<button className={styles.keep}>keep</button>
+					<button onClick={save} className={styles.keep}>keep</button>
+					<button onClick={() => props.deleteUser(props.currentUser.id)} className={styles.delete}>delete</button>
 				</div>
-			</form>
+			</div>
 		</div>
 	)
 }
