@@ -1,34 +1,28 @@
-import { useState } from "react"
 import UserModal from "../UserModal"
 import Users from "../Users"
+import styles from "./styles.module.scss"
 
-const UsersPage = (props) => {
-
-	let [isModalActive, setModalActive] = useState(false)
-
-	const modalActivation = () => {
-		setModalActive(true)
-	}
-	const modalDeactivation = () => {
-		setModalActive(false)
-	}
-	let addNewUser = (value) => {
-		props.addUser(value.newLastName, value.newFirstName)
-		setModalActive(false)
-	}
-
+let state = {
+	isModalOpen: true,
+	users: [
+		{ id: 1, firstName: 'Ivan', lastName: 'Nefedov' },
+		{ id: 2, firstName: 'Nikita', lastName: 'Zalubov' },
+		{ id: 3, firstName: 'Andrew', lastName: 'Taranow' },
+		{ id: 4, firstName: 'Mihail', lastName: 'Ptuskin' },
+		{ id: 5, firstName: 'Artem', lastName: 'Haliman' }
+	]
+}
+const UsersPage = () => {
 	return (
-		<div>
-			<Users users={props.users}/>
+		<div className={styles.userPage}>
+			<Users users={state.users}/>
 			{
-				isModalActive
-					? <UserModal onSubmit={addNewUser} modalDeactivation={ modalDeactivation }/>
-				: <div>
-					<span onClick={modalActivation}>+</span>
-				</div>
-				
+				state.isModalOpen
+					? <UserModal/>
+					: <div className={styles.addUser}>
+						<span>+</span>
+					</div>
 			}
-			
 		</div>
 	)
 }

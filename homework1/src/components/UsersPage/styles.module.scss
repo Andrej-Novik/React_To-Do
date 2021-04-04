@@ -1,0 +1,15 @@
+.userPage{
+	display: inline-flex;
+	align-items: center;
+	flex-direction: column;
+	.addUser {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: greenyellow;;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+	}
+}
