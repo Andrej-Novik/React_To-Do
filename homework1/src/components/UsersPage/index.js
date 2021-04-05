@@ -2,16 +2,17 @@ import { useState } from "react"
 import UserModal from "../UserModal"
 import Users from "../Users"
 import styles from "./styles.module.scss"
+import uuid from 'react-uuid'
 
 const UsersPage = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	let [usersList, setUsersList] = useState([
-		{ id: 1, firstName: 'Ivan', lastName: 'Nefedov' },
-		{ id: 2, firstName: 'Nikita', lastName: 'Zalubov' },
-		{ id: 3, firstName: 'Andrew', lastName: 'Taranow' },
-		{ id: 4, firstName: 'Mihail', lastName: 'Ptuskin' },
-		{ id: 5, firstName: 'Artem', lastName: 'Haliman' }
+		{ id: uuid(), firstName: 'Ivan', lastName: 'Nefedov' },
+		{ id: uuid(), firstName: 'Nikita', lastName: 'Zalubov' },
+		{ id: uuid(), firstName: 'Andrew', lastName: 'Taranow' },
+		{ id: uuid(), firstName: 'Mihail', lastName: 'Ptuskin' },
+		{ id: uuid(), firstName: 'Artem', lastName: 'Haliman' }
 	])
 
 	let [currentUser, setCurrentUser] = useState({})
@@ -21,41 +22,37 @@ const UsersPage = () => {
 		setCurrentUser(thisUser)
 		setIsOpen(true)
 	}
-
 	const onSave = (firstName, lastName, id) => {
 		if (firstName && lastName) {
 			if (id) {
 				setUsersList(
-					usersList = usersList.map(user => 
-						user.id === id ? { ...user, firstName, lastName } : user)
+					usersList.map(user => user.id === id ?
+						{ ...user, firstName, lastName } : user)
 				)
 			}
 			else {
 				setUsersList([...usersList, {
 					firstName,
 					lastName,
-					id: Date.now()
+					id: uuid()
 				}])
 			}
 			setIsOpen(false)
 			setCurrentUser({})
 		}
 	}
-
 	const deleteUser = (id) => {
 		setUsersList(
-			usersList = usersList.filter(user => 
+			usersList.filter(user => 
 				user.id !== id )
 		)
 		setIsOpen(false)
 		setCurrentUser({})
 	}
-
 	const onClose = () => {
 		setIsOpen(false)
 		setCurrentUser({})
 	}
-
 	return (
 		<div className={styles.userPage}>
 			<Users

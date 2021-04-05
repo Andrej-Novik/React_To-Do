@@ -1,17 +1,15 @@
 import { BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
+import styles from "./App.module.scss"
 import UsersPage from './components/UsersPage';
 
 function App() {
-   return (
-      <BrowserRouter>
-			<div className="app">
-				<div className="content">
-					<Route path="" render={() => <UsersPage />} />
-				</div>
-         </div>
-      </BrowserRouter>
-   );
+  return (
+    <BrowserRouter>
+      <div className={styles.app}>
+		  	<Route path="" render={() => <UsersPage />} />
+			</div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

@@ -14,36 +14,40 @@ const UserModal = (props) => {
 	const save = () => {
 		props.onSave(firstName, lastName, props.currentUser.id)
 	}
-
 	return props.isModalOpen &&(
 		<div className={styles.userModal }>
 			<div className={styles.form} >
-			<span onClick={props.onClose} className={styles.close}>X</span>
-			{
-				props.currentUser.id ?  <h3>Edit user</h3> : <h3>Add user</h3>
-			}
+				<span onClick={props.onClose} className={styles.close}>X</span>
+				{
+					props.currentUser.id ?  <h3>Edit user</h3> : <h3>Add user</h3>
+				}
 				<div className={styles.firstName}>
-				<input
-					value={lastName}
-					placeholder="last name"
-					onChange={(e) => {
-						setLastName(e.target.value)
-					}}/>
-				
+					<input
+						value={lastName}
+						placeholder="last name"
+						onChange={(e) => {
+							setLastName(e.target.value)
+						}}
+					/>
 				</div>
-
 				<div className={styles.lastName}>
-				<input
-					value={firstName}
-					placeholder="first name"
-					onChange={(e) => {
-						setFirstName(e.target.value)
-					}}/>
+					<input
+						value={firstName}
+						placeholder="first name"
+						onChange={(e) => {
+							setFirstName(e.target.value)
+						}}
+					/>
 				</div>
-				
 				<div className={styles.buttons}>
-					<button onClick={save} className={styles.keep}>keep</button>
-					<button onClick={() => props.deleteUser(props.currentUser.id)} className={styles.delete}>delete</button>
+				{
+					props.currentUser.id
+						? <button disabled={props.currentUser.lastName === lastName && props.currentUser.firstName === firstName} onClick={save} className={styles.keep}>keep</button>
+						: <button onClick={save} className={styles.keep}>create</button>
+				}
+				{
+					props.currentUser.id && <button onClick={() => props.deleteUser(props.currentUser.id)} className={styles.delete}>delete</button>
+				}
 				</div>
 			</div>
 		</div>
