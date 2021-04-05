@@ -2,17 +2,17 @@ import { useState } from "react"
 import UserModal from "../UserModal"
 import Users from "../Users"
 import styles from "./styles.module.scss"
-import uuid from 'react-uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 const UsersPage = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	let [usersList, setUsersList] = useState([
-		{ id: uuid(), firstName: 'Ivan', lastName: 'Nefedov' },
-		{ id: uuid(), firstName: 'Nikita', lastName: 'Zalubov' },
-		{ id: uuid(), firstName: 'Andrew', lastName: 'Taranow' },
-		{ id: uuid(), firstName: 'Mihail', lastName: 'Ptuskin' },
-		{ id: uuid(), firstName: 'Artem', lastName: 'Haliman' }
+		{ id: uuidv4(), firstName: 'Ivan', lastName: 'Nefedov' },
+		{ id: uuidv4(), firstName: 'Nikita', lastName: 'Zalubov' },
+		{ id: uuidv4(), firstName: 'Andrew', lastName: 'Taranow' },
+		{ id: uuidv4(), firstName: 'Mihail', lastName: 'Ptuskin' },
+		{ id: uuidv4(), firstName: 'Artem', lastName: 'Haliman' }
 	])
 
 	let [currentUser, setCurrentUser] = useState({})
@@ -34,7 +34,7 @@ const UsersPage = () => {
 				setUsersList([...usersList, {
 					firstName,
 					lastName,
-					id: uuid()
+					id: uuidv4()
 				}])
 			}
 			setIsOpen(false)
