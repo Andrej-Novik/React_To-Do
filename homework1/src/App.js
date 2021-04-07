@@ -1,12 +1,12 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import styles from "./App.module.scss"
-import UsersPage from './components/UsersPage';
+import UsersPageContainer from './components/pages/UsersPage/conteiner';
 
 function App() {
   return (
     <BrowserRouter>
       <div className={styles.app}>
-		  	<Route path="" render={() => <UsersPage />} />
+		  	<Route path="" render={() => <UsersPageContainer />} />
 			</div>
     </BrowserRouter>
   );
