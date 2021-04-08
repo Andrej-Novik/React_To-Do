@@ -1,5 +1,5 @@
-import styles from "./styles.module.scss"
 import React, { useEffect, useState } from "react"
+import styles from "./styles.module.scss"
 
 const UserModal = ({ isOpen, currentUser, onClose, onDelete, onChange }) => {
 	let [firstName, setFirstName] = useState(currentUser.firstName)

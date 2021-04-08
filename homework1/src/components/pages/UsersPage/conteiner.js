@@ -1,14 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { openModal, closeModal, setCurrentUser, deleteUser, saveUser } from '../../../redux/actions/users'
-import {getUsers, getIsModelOpen, getCurrentUser} from "../../../redux/selectors/users"
 import UsersPage from '.'
 
 export const UsersPageContainer = () => {
-	//redax dev tools
 	const dispatch = useDispatch()
-	const isOpen = useSelector(getIsModelOpen)
-	const users = useSelector(getUsers)
-	const currentUser = useSelector(getCurrentUser)
+	const isOpen = useSelector(state => state.usersPage.isModalOpen)
+	const users = useSelector(state => state.usersPage.users)
+	const currentUser = useSelector(state => state.usersPage.currentUser)
 
 	const onOpen = () => {
 		dispatch(openModal())
@@ -26,7 +24,7 @@ export const UsersPageContainer = () => {
 	const onChange = (id, firstName, lastName) => {
 		dispatch(saveUser(id, firstName, lastName))
 	}
-
+	
 	return (
 		<UsersPage
 			users={users}

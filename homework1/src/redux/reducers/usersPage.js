@@ -1,5 +1,5 @@
-import { OPEN_MODAL, CLOSE_MODAL, DELETE_USER, SET_CURRENT_USER, CHANGE_USER, ADD_USER } from '../actionTypes/users'
 import { v4 as uuidv4 } from 'uuid';
+import { OPEN_MODAL, CLOSE_MODAL, DELETE_USER, SET_CURRENT_USER, CHANGE_USER, ADD_USER } from '../actionTypes/users'
 
 const initialState = {
 	isModalOpen: false,
