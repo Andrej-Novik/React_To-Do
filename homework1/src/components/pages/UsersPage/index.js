@@ -1,21 +1,12 @@
-import UserModal from "../../organisms/UserModal"
-import Users from "../../organisms/Users"
+import UsersModalContainer from "../../organisms/UserModal/conteiner"
+import UsersContainer from "../../organisms/Users/conteiner"
 import styles from "./styles.module.scss"
 
-const UsersPage = ({ users, isOpen, currentUser, onOpen, onClose, onEdit, onDelete, onChange }) => {
+const UsersPage = ({ onOpen}) => {
 	return (
 		<div className={styles.userPage}>
-			<Users
-				users={users}
-				onEdit={onEdit}
-			/>
-			<UserModal
-				currentUser={currentUser}
-				isOpen={isOpen}
-				onClose={onClose}
-				onDelete={onDelete}
-				onChange={onChange}
-			/>
+			<UsersContainer />
+			<UsersModalContainer />
 			<div
 				className={styles.addUser}
 				onClick={ onOpen }

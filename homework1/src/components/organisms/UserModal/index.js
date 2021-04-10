@@ -40,9 +40,9 @@ const UserModal = ({ isOpen, currentUser, onClose, onDelete, onChange }) => {
 				</div>
 				<div className={styles.buttons}>
 				{
-					currentUser.id
+						currentUser.id
 							? <button
-								disabled={currentUser.lastName === lastName && currentUser.firstName === firstName}
+								disabled={(currentUser.lastName === lastName && currentUser.firstName === firstName) || (!lastName || !firstName) }
 								onClick={() => onChange(currentUser.id, firstName, lastName)}
 								className={styles.keep}
 							>keep</button>
