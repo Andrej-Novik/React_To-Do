@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { openModal, closeModal, deleteUser, saveUser } from '../../../redux/actions/users'
+import { closeModal, deleteUser, saveUser } from '../../../redux/actions/users'
 import UsersModal from '.'
 
 export const UsersModalContainer = () => {
@@ -7,9 +7,6 @@ export const UsersModalContainer = () => {
 	const isOpen = useSelector(state => state.usersPage.isModalOpen)
 	const currentUser = useSelector(state => state.usersPage.currentUser)
 
-	const onOpen = () => {
-		dispatch(openModal())
-	}
 	const onClose = () => {
 		dispatch(closeModal())
 	}
