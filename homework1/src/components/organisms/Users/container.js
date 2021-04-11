@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrentUser } from '../../../redux/actions/users'
-import Users from '.'
+import Users from './component'
 
 export const UsersContainer = () => {
 	const dispatch = useDispatch()
@@ -19,4 +19,4 @@ export const UsersContainer = () => {
 	)
 }
 
-export default UsersContainer
+export const container =  UsersContainer

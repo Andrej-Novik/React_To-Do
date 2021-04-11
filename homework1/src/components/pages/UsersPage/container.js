@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { openModal } from '../../../redux/actions/users'
-import UsersPage from '.'
+import UsersPage from './component'
 
 export const UsersPageContainer = () => {
 	const dispatch = useDispatch()
@@ -14,4 +14,4 @@ export const UsersPageContainer = () => {
 	)
 }
 
-export default UsersPageContainer
+export const container =  UsersPageContainer
