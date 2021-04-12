@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import "./assets/styles.scss"
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import reportWebVitals from "./reportWebVitals";
+import store from "./redux";
+import App from "./App";
+import "./assets/styles.scss";
 
 ReactDOM.render(
-	<App />,
-  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
