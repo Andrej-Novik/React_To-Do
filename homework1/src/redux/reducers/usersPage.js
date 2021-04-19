@@ -6,17 +6,22 @@ import {
   SET_CURRENT_USER,
   CHANGE_USER,
   ADD_USER,
+  CHANGE_USERS_LOADER,
+  ERROR_GETTING_USERS,
+  USER_LIST_SUCCESS,
 } from "../actionTypes/users";
 
 const initialState = {
   isModalOpen: false,
   currentUser: { id: null, firstName: "", lastName: "" },
+  userLoader: false,
+  isError: false,
   users: [
-    { id: uuidv4(), firstName: "Ivan", lastName: "Nefedov" },
-    { id: uuidv4(), firstName: "Nikita", lastName: "Zalubov" },
-    { id: uuidv4(), firstName: "Andrew", lastName: "Taranow" },
-    { id: uuidv4(), firstName: "Mihail", lastName: "Ptuskin" },
-    { id: uuidv4(), firstName: "Artem", lastName: "Haliman" },
+    //{ id: uuidv4(), firstName: "Ivan", lastName: "Nefedov" },
+    //{ id: uuidv4(), firstName: "Nikita", lastName: "Zalubov" },
+    //{ id: uuidv4(), firstName: "Andrew", lastName: "Taranow" },
+    //{ id: uuidv4(), firstName: "Mihail", lastName: "Ptuskin" },
+    //{ id: uuidv4(), firstName: "Artem", lastName: "Haliman" },
   ],
 };
 
@@ -72,6 +77,24 @@ const users = (state = initialState, action) => {
         users: [...state.users, { id: uuidv4(), firstName, lastName }],
         isModalOpen: false,
         currentUser: {},
+      };
+    }
+    case CHANGE_USERS_LOADER: {
+      return {
+        ...state,
+        userLoader: action.value,
+      };
+    }
+    case ERROR_GETTING_USERS: {
+      return {
+        ...state,
+        isError: action.value,
+      };
+    }
+    case USER_LIST_SUCCESS: {
+      return {
+				...state,
+				users: action.value
       };
     }
     default:
