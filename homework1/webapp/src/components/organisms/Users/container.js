@@ -21,9 +21,7 @@ export const UsersContainer = () => {
 	const getUsers = () => {
 		dispatch(getUsersList())
 	}
-
 	
-
 	return <Users users={users} onEdit={onEdit} userLoader={userLoader} isError={isError} getUsers={getUsers}/>;
 };
 

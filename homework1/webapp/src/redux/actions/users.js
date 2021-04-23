@@ -6,10 +6,10 @@ import {
   CHANGE_USER,
   ADD_USER,
   CHANGE_USERS_LOADER,
-	ERROR_GETTING_USERS,
-	USER_LIST_SUCCESS
+  ERROR_GETTING_USERS,
+  USER_LIST_SUCCESS,
 } from "../actionTypes/users";
-import Repository from '../../repository'
+import Repository from "../../repository";
 
 export function openModal() {
   return { type: OPEN_MODAL };
@@ -37,18 +37,19 @@ export function userListError(value) {
   return { type: ERROR_GETTING_USERS, value };
 }
 export function userListSuccess(value) {
-	console.log(value)
-	
+  console.log(value);
+
   return { type: USER_LIST_SUCCESS, value };
 }
 
 export const getUsersList = () => async (dispatch) => {
 	dispatch(userLoader(true));
 	
-  const { value, error } = await Repository.APICore.getUserList();
+	const { value, error } = await Repository.APICore.getUsers();
+	
   if (error || !value) {
     dispatch(userListError(true));
-  } else dispatch(userListSuccess(value));
+	} else dispatch(userListSuccess(value));
 
   dispatch(userLoader(false));
 };
