@@ -10,8 +10,8 @@ const UsersModalContainer = () => {
   const onClose = () => {
     dispatch(closeModal());
   };
-  const onDelete = (id) => {
-    dispatch(deleteUser(id));
+  const onDelete = (id) => { 
+		dispatch(deleteUser(id));
   };
   const onChange = (id, firstName, lastName) => {
     dispatch(saveUser(id, firstName, lastName));

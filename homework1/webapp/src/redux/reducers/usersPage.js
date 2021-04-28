@@ -54,7 +54,7 @@ const users = (state = initialState, action) => {
     case DELETE_USER:
       return {
         ...state,
-        users: state.users.filter((user) => user.id !== action.id),
+        users: state.users.filter((user) => user.id !== action.userId),
         isModalOpen: false,
       };
     case CHANGE_USER: {

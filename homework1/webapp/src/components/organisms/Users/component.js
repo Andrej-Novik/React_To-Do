@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import Loader from "../../../molocules/Loader";
+import Loader from "../../atoms/Loader";
 import User from "../../moleculs/User";
 import styles from "./styles.module.scss";
 
 const Users = ({ users, userLoader, isError, onEdit, getUsers }) => {
   useEffect(() => {
     getUsers();
-  },[]);
+  }, []);
 
   return (
     <div className={styles.users}>
