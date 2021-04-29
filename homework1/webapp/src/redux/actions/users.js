@@ -50,22 +50,27 @@ export const getUsersList = () => async (dispatch) => {
 };
 
 export const deleteUser = (userId) => async (dispatch) => {
+	dispatch(userLoader(true));
   const { value, error } = await Repository.APICore.deleteUser(userId);
   if (error || !value) {
     dispatch(userListError(true));
   } else {
     dispatch(deleteStoreUser(userId));
   }
+	dispatch(userLoader(false));
 };
 
 export const getUser = (userId) => async (dispatch) => {
+	dispatch(userLoader(true));
   const { value, error } = await Repository.APICore.getUser(userId);
   if (error || !value) {
     dispatch(userListError(true));
   } else dispatch(userListSuccess(value));
+	dispatch(userLoader(false));
 };
 
 export const saveUser = (userId, firstName, lastName) => async (dispatch) => {
+	dispatch(userLoader(true));
   if (userId) {
     const { value, error } = await Repository.APICore.updateUser(
       userId,
@@ -88,4 +93,5 @@ export const saveUser = (userId, firstName, lastName) => async (dispatch) => {
       dispatch(saveStoreUser(userId, firstName, lastName));
     }
   }
+	dispatch(userLoader(false));
 };
