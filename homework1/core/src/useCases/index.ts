@@ -1,4 +1,4 @@
-const UsersService = require("./usersService");
+import UsersService from "./usersService"
 
 class UseCases {
   UsersService;
@@ -6,4 +6,4 @@ class UseCases {
     this.UsersService = UsersService;
   }
 }
-module.exports = new UseCases();
+export default new UseCases();
