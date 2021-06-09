@@ -24,6 +24,16 @@ class UsersRepository implements IUsersRepository {
 		return { error: e }
 		}
 	}
+	getUserByFirstName = async (firstName: string) => {
+		try {
+			const response = await DBConnector.connector
+			?.getRepository(User)
+				.findOne({ where: { firstName } })
+			return { value: response }
+		} catch (e) {
+		return { error: e }
+		}
+	}
 	editUser = async (id: string, firstName: string, lastName: string) => {
 		try {
 			const response = await DBConnector.connector

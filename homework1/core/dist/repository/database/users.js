@@ -28,6 +28,16 @@ class UsersRepository {
                 return { error: e };
             }
         };
+        this.getUserByFirstName = async (firstName) => {
+            var _a;
+            try {
+                const response = await ((_a = connector_1.default.connector) === null || _a === void 0 ? void 0 : _a.getRepository(users_1.User).findOne({ where: { firstName } }));
+                return { value: response };
+            }
+            catch (e) {
+                return { error: e };
+            }
+        };
         this.editUser = async (id, firstName, lastName) => {
             var _a;
             try {
