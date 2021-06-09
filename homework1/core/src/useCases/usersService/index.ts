@@ -1,21 +1,5 @@
 import  UsersRepository from "../../repository/database/users"
 class UsersService {
-	
-	//getList = async () => {
-  //  const res = {
-	//		value: [
-  //      { id: 1, firstName: "Ivan", lastName: "Nefedov" },
-  //      { id: 2, firstName: "Nikita", lastName: "Zalubov" },
-  //      { id: 3, firstName: "Andrew", lastName: "Taranow" },
-  //      { id: 4, firstName: "Mihail", lastName: "Ptuskin" },
-  //      { id: 5, firstName: "Artem", lastName: "Haliman" },
-  //    ],
-	//		//UsersRepository.getList(),
-  //    error: undefined,
-  //  };
-  //  if (res.error) return { error: res.error };
-  //  return { value: res.value };
-	//};
 	getList = async () => {
 		const { value, error } = await UsersRepository.getList();
     if (error) return { error: error };

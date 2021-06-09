@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import Connector from "./connector"
 
 class Core {
   getUsers = async () => {
@@ -7,7 +8,7 @@ class Core {
       error: null,
     };
     try {
-      const response = await axios.get("/api/users");
+      const response = await Connector.connector.get("/api/users");
       result.value = response.data;
     } catch (e) {
       result.error = e.response;
@@ -21,7 +22,7 @@ class Core {
       error: null,
     };
     try {
-      const response = await axios.delete(`/api/users/${userId}`);
+      const response = await Connector.connector.delete(`/api/users/${userId}`);
       result.value = response.data;
     } catch (e) {
       result.error = e.response;
@@ -35,7 +36,7 @@ class Core {
       error: null,
     };
     try {
-      const response = await axios.post(`/api/users/`, {
+      const response = await Connector.connector.post(`/api/users/`, {
         firstName,
         lastName,
       });
@@ -52,7 +53,7 @@ class Core {
       error: null,
     };
     try {
-      const response = await axios.patch(`/api/users/${userId}`, {
+      const response = await Connector.connector.patch(`/api/users/${userId}`, {
         firstName,
         lastName,
       });
@@ -69,12 +70,43 @@ class Core {
       error: null,
     };
     try {
-      const response = await axios.get(`/api/users/`, userId);
+      const response = await Connector.connector.get(`/api/users/`, userId);
       result.value = response.data;
     } catch (e) {
       result.error = e.response;
     }
     return result;
   };
+  login = async (email, password) => {
+    const result = {
+      value: null,
+      error: null,
+    };
+    try {
+      const response = await Connector.connector.post(`/api/auth/login`, {
+        email,
+        password,
+      });
+      result.value = response.data;
+    } catch (e) {
+      result.error = e.response.data;
+    }
+    return result;
+	};
+	refresh = async (refreshToken) => {
+		const result = {
+			value: null,
+			error: null,
+		};
+		try {
+			const response = await Connector.connector.post(`/api/auth/refresh`, {
+				refreshToken
+			});
+			result.value = response.data;
+		} catch (e) {
+			result.error = e.response.data;
+		}
+		return result;
+	}
 }
 export default new Core();

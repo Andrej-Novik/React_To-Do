@@ -17,7 +17,7 @@ router.get("", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     const { value, error } = await useCases_1.default.UsersService.deleteUser(req.params.id);
     if (error) {
-        res.status(500).json(error || new Error('UC undefined error'));
+        res.status(500).json(error || new Error("UC undefined error"));
         return;
     }
     res.status(200).json(value);
